@@ -7,7 +7,7 @@ const chaptersApiUrl = 'https://api.quran.com/api/v4/chapters';
 const versesApiUrl = 'https://api.quran.com/api/v4/quran/verses/uthmani?chapter_number=';
 
 // Define the base path to save the data
-const basePath = path.join(__dirname, '../../public/data');
+const basePath = path.join(__dirname, '../public/data');
 
 // Define the path to save the chapters JSON
 const chaptersPath = path.join(basePath, 'chapters.json');
