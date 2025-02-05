@@ -1,101 +1,107 @@
+'use client'
+
 import Image from "next/image";
+import ContentCard from "@/components/ContentCard";
+import Drawer from "@/components/Drawer";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [chapters, setChapters] = useState<any>([]);
+  const [verses, setVerses] = useState<any>([]);
+  const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+
+  const [chapterId, setChapterId] = useState<number>(1);
+  const [verseNum, setVerseNum] = useState<number>(1);
+  const [wordIndex, setWordIndex] = useState<number>(0);
+  const [verseText, setVerseText] = useState<string>("");
+
+  console.log({ wordIndex });
+
+  useEffect(() => {
+    const fetchChapters = fetch("/data/chapters.json").then((response) => response.json());
+    const fetchSurah = fetch("/data/chapters/1.json").then((response) => response.json());
+
+    Promise.all([fetchChapters, fetchSurah])
+      .then(([chaptersData, surahData]) => {
+        setChapters(chaptersData.chapters);
+        setVerses(surahData.verses);
+        setVerseNum(1);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const handleChapterSelect = (chapterId: number) => {
+    fetch(`/data/chapters/${chapterId}.json`)
+      .then((response) => response.json())
+      .then((data) => {
+        setChapterId(chapterId);
+        setVerses(data.verses);
+        setVerseText("");
+        setVerseNum(1);
+        setWordIndex(0);
+      })
+      .catch((error) => console.error("Error fetching chapter:", error));
+  };
+
+  const goToNextWord = () => {
+    const currentVerse = verses[verseNum - 1];
+    const rawFullText = currentVerse?.text_uthmani.trim();
+
+    if (wordIndex <= rawFullText.split(" ").length - 1) {
+      setWordIndex((prevIndex) => prevIndex + 1); //go to next word
+    } else if (verseNum < verses.length) {
+      setVerseNum((prevVerseNum) => prevVerseNum + 1); //go to next verse
+      setVerseText("");
+      setWordIndex(0);
+      return;
+    } else if (chapterId < chapters.length) {
+      setVerseText("");
+      setVerseNum(1);
+      setWordIndex(0);
+      handleChapterSelect(chapterId + 1); //go to next chapter
+      return;
+    }
+
+    const fullText: string = verses[verseNum - 1]?.text_uthmani.trim();
+    const words: Array<string> = fullText?.split(" ");
+    const partialText: string = words.slice(0, wordIndex + 1).join(" ");
+    console.log({ fullText, words, partialText, wordIndex });
+    setVerseText(partialText);
+  };
+
+  console.log({ verseText });
+  return (
+    <div className="container max-w-screen-xl mx-auto px-4">
+      <nav className="sticky top-0 flex items-center space-x-4 justify-between">
+        <div className="flex items-center">
+          <Image src="/icon.png" alt="icon" width={16} height={16} />
+          <div className="ml-2">
+            Quran Reader
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <button onClick={toggleDrawer} className="p-2 flex items-center">
+          <span className="material-icons">menu</span>
+        </button>
+      </nav>
+      <Drawer
+        chapters={chapters}
+        drawerOpen={drawerOpen}
+        toggleDrawer={toggleDrawer}
+        onChapterSelect={handleChapterSelect}
+      />
+      <div className="flex justify-center xitems-center">
+        <ContentCard
+          title={chapters[chapterId - 1]?.name_arabic || ""}
+          verseText={verseText}
+          verseNum={verseNum}
+          goToNextWord={goToNextWord}
+        />
+      </div>
     </div>
   );
 }

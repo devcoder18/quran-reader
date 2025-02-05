@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +16,52 @@
   }
 }
 
+@font-face {
+  font-family: 'UthmanTN';
+  src: url('/fonts/UthmanTN_v2-0.woff2') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'UthmanTNB';
+  src: url('/fonts/UthmanTNB_v2-0.woff2') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'UthmanTNB', Arial, Helvetica, sans-serif;
+}
+
+.test {
+  background-color: red;
+}
+
+.test2 {
+  background-color: rgb(168, 127, 241);
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.drawer {
+  width: 250px;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.drawer.open {
+  transform: translateX(0);
 }
