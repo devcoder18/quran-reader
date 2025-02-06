@@ -22,7 +22,6 @@ const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onC
             className={`p-2 border-b drawer-item ${chapter.id === selectedChapterId ? 'selected-chapter' : ''}`}
             onClick={() => {
               onChapterSelect(chapter.id);
-              //toggleDrawer();
             }}
           >
             {chapter.name_arabic}
