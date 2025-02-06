@@ -53,23 +53,6 @@ body {
   text-align: right;
 }
 
-.drawer {
-  width: 250px;
-  background-color: white;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100%;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  overflow-y: auto;
-}
-
-.drawer.open {
-  transform: translateX(0);
-}
-
 .highlighted-word {
   background-color: var(--highlight-background);
   color: var(--highlight-foreground);
@@ -80,14 +63,6 @@ body {
 .next-word-button {
   @apply rounded-full bg-gray-200 px-3 py-1 text-xs leading-4 font-semibold text-black hover:bg-gray-300 mb-2;
   user-select: none;
-}
-
-.selected-chapter {
-  @apply font-bold bg-gray-100;
-}
-
-.drawer-item {
-  cursor: pointer;
 }
 
 .verse-number {

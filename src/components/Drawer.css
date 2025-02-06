@@ -1,0 +1,25 @@
+.drawer {
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.drawer.open {
+  transform: translateX(0);
+}
+
+.selected-chapter {
+  font-weight: bold;
+  background-color: #f3f4f6; /* Tailwind's gray-100 */
+}
+
+.drawer-item {
+  cursor: pointer;
+  @apply text-lg; /* Increase font size using Tailwind */
+}

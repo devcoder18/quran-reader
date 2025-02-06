@@ -1,4 +1,5 @@
 import React from 'react';
+import './Drawer.css';
 
 interface DrawerProps {
   chapters: any[];
@@ -10,7 +11,7 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onChapterSelect, selectedChapterId }) => {
   return (
-    <div className={`fixed top-0 right-0 h-full bg-white shadow-lg transform ${drawerOpen ? 'translate-x-0' : 'translate-x-full'} transition-transform duration-300 ease-in-out overflow-y-auto`}>
+    <div className={`drawer ${drawerOpen ? 'open' : ''}`}>
       <button onClick={toggleDrawer} className="p-2">
         <span className="material-icons">close</span>
       </button>
@@ -21,7 +22,7 @@ const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onC
             className={`p-2 border-b drawer-item ${chapter.id === selectedChapterId ? 'selected-chapter' : ''}`}
             onClick={() => {
               onChapterSelect(chapter.id);
-              toggleDrawer();
+              //toggleDrawer();
             }}
           >
             {chapter.name_arabic}
