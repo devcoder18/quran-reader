@@ -9,6 +9,7 @@ export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
   const [verses, setVerses] = useState<any>([]);
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [chapterId, setChapterId] = useState<number>(1);
   const [verseNum, setVerseNum] = useState<number>(1);
@@ -33,16 +34,21 @@ export default function Home() {
   };
 
   const handleChapterSelect = (chapterId: number) => {
+    setChapterId(chapterId);
+    setLoading(true);
     fetch(`/data/chapters/${chapterId}.json`)
       .then((response) => response.json())
       .then((data) => {
-        setChapterId(chapterId);
         setVerses(data.verses);
         setVerseText("");
         setVerseNum(1);
         setWordIndex(0);
+        setLoading(false);
       })
-      .catch((error) => console.error("Error fetching chapter:", error));
+      .catch((error) => {
+        console.error("Error fetching chapter:", error);
+        setLoading(false);
+      });
   };
 
   const goToNextWord = () => {
@@ -127,6 +133,7 @@ export default function Home() {
           goToNextWord={goToNextWord}
           goToPreviousWord={goToPreviousWord}
           isLastVerseWord={isLastVerseWord}
+          loading={loading}
         />
       </div>
     </div>
