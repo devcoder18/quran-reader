@@ -78,6 +78,18 @@ export default function Home() {
       const partialText: string = words.slice(0, wordIndex - 1).join(" ");
       setVerseText(partialText);
     }
+    else if (verseNum > 1) {
+      setVerseNum((prevVerseNum) => prevVerseNum - 1); //go to next verse
+      setVerseText("");
+      setWordIndex(0);
+      return;
+    } else if (chapterId > 0) {
+      setVerseText("");
+      setVerseNum(1);
+      setWordIndex(0);
+      handleChapterSelect(chapterId - 1); //go to next chapter
+      return;
+    }
   };
   
   const words = verses[verseNum - 1]?.text_uthmani.trim().split(" ");
