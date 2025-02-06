@@ -16,8 +16,6 @@ export default function Home() {
   const [wordIndex, setWordIndex] = useState<number>(0);
   const [verseText, setVerseText] = useState<string>("");
 
-  console.log({ wordIndex });
-
   useEffect(() => {
     const fetchChapters = fetch("/data/chapters.json").then((response) => response.json());
     const fetchSurah = fetch("/data/chapters/1.json").then((response) => response.json());
@@ -70,11 +68,12 @@ export default function Home() {
     const fullText: string = verses[verseNum - 1]?.text_uthmani.trim();
     const words: Array<string> = fullText?.split(" ");
     const partialText: string = words.slice(0, wordIndex + 1).join(" ");
-    console.log({ fullText, words, partialText, wordIndex });
     setVerseText(partialText);
   };
-
-  console.log({ verseText });
+  
+  const verseTextPrefix = verseText.split(" ").slice(0, -1).join(" ");
+  const lastWord = verseText.split(" ").slice(-1).join(" ");
+  
   return (
     <div className="container max-w-screen-xl mx-auto px-4">
       <nav className="sticky top-0 flex items-center space-x-4 justify-between">
@@ -97,7 +96,8 @@ export default function Home() {
       <div className="flex justify-center xitems-center">
         <ContentCard
           title={chapters[chapterId - 1]?.name_arabic || ""}
-          verseText={verseText}
+          verseText={verseTextPrefix}
+          lastWord={lastWord}
           verseNum={verseNum}
           goToNextWord={goToNextWord}
         />
