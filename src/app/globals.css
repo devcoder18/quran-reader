@@ -68,7 +68,7 @@ body {
 
 .highlighted-word {
   @apply bg-yellow-100;
-  /* font-weight: bold; */
+ 
 }
 
 .next-word-button {
@@ -94,4 +94,5 @@ body {
 
 .verse-number-default {
   @apply border-gray-400;
+  font-family: 'UthmanTN', Arial, Helvetica, sans-serif;
 }
