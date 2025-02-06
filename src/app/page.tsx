@@ -83,10 +83,11 @@ export default function Home() {
       setVerseText("");
       setWordIndex(0);
       return;
-    } else if (chapterId > 0) {
+    } else if (chapterId > 1) {
       setVerseText("");
       setVerseNum(1);
       setWordIndex(0);
+      console.log({ chapterId });
       handleChapterSelect(chapterId - 1); //go to next chapter
       return;
     }
