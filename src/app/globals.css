@@ -70,3 +70,28 @@ body {
   @apply bg-yellow-100;
   /* font-weight: bold; */
 }
+
+.next-word-button {
+  @apply rounded-full bg-gray-200 px-3 py-1 text-xs leading-4 font-semibold text-black hover:bg-gray-300 mb-2;
+  user-select: none;
+}
+
+.selected-chapter {
+  @apply font-bold bg-gray-100;
+}
+
+.drawer-item {
+  cursor: pointer;
+}
+
+.verse-number {
+  @apply rounded-full border px-2 py-1 mx-1 w-8 h-8 inline-flex items-center justify-center;
+}
+
+.verse-number-last {
+  @apply border-gray-800 bg-gray-100;
+}
+
+.verse-number-default {
+  @apply border-gray-400;
+}

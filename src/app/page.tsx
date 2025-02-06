@@ -10,7 +10,6 @@ export default function Home() {
   const [verses, setVerses] = useState<any>([]);
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
 
-
   const [chapterId, setChapterId] = useState<number>(1);
   const [verseNum, setVerseNum] = useState<number>(1);
   const [wordIndex, setWordIndex] = useState<number>(0);
@@ -71,9 +70,11 @@ export default function Home() {
     setVerseText(partialText);
   };
   
+  const words = verses[verseNum - 1]?.text_uthmani.trim().split(" ");
   const verseTextPrefix = verseText.split(" ").slice(0, -1).join(" ");
   const lastWord = verseText.split(" ").slice(-1).join(" ");
-  
+  const isLastVerseWord = wordIndex === words?.length;
+
   return (
     <div className="container max-w-screen-xl mx-auto px-4">
       <nav className="sticky top-0 flex items-center space-x-4 justify-between">
@@ -92,6 +93,7 @@ export default function Home() {
         drawerOpen={drawerOpen}
         toggleDrawer={toggleDrawer}
         onChapterSelect={handleChapterSelect}
+        selectedChapterId={chapterId}
       />
       <div className="flex justify-center xitems-center">
         <ContentCard
@@ -100,6 +102,7 @@ export default function Home() {
           lastWord={lastWord}
           verseNum={verseNum}
           goToNextWord={goToNextWord}
+          isLastVerseWord={isLastVerseWord}
         />
       </div>
     </div>
