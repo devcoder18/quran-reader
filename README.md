@@ -1,8 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quran Reader
+
+Quran Reader is a web application built with [Next.js](https://nextjs.org) that allows users to read and navigate through the Quran. The application provides features such as chapter selection, verse navigation, and word-by-word reading.
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/your-username/quran-reader.git
+cd quran-reader
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -16,9 +26,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
+
+- **Chapter Selection**: Navigate through different chapters of the Quran.
+- **Verse Navigation**: Move between verses within a chapter.
+- **Word-by-Word Reading**: Highlight and navigate through each word in a verse.
 
 ## Learn More
 
