@@ -30,7 +30,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
                 </button>
             </div>
             <div className="rtl text-2xl md:text-2xl lg:text-3xl">
-                {verseText} <span className='highlighted-word'>{lastWord}</span>
+                {verseText} {lastWord && <span className='highlighted-word'>{lastWord}</span>}
                 <span className={`verse-number ${isLastVerseWord ? 'verse-number-last' : 'verse-number-default'}`}>
                     {verseNum.toLocaleString('ar-SA')}
                 </span>

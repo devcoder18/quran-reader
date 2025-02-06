@@ -7,12 +7,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --highlight-background: #fff9c4; /* Light yellow */
+  --highlight-foreground: #000000; /* Black */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --highlight-background: #ffeb3b; /* Bright yellow */
+    --highlight-foreground: #000000; /* Black */
   }
 }
 
@@ -67,14 +71,15 @@ body {
 }
 
 .highlighted-word {
-  @apply bg-yellow-100;
- 
+  background-color: var(--highlight-background);
+  color: var(--highlight-foreground);
+  padding: 0 0.2em; /* Add padding around the highlighted word */
+  border-radius: 0.2em; /* Optional: Add border radius for a rounded effect */
 }
 
 .next-word-button {
   @apply rounded-full bg-gray-200 px-3 py-1 text-xs leading-4 font-semibold text-black hover:bg-gray-300 mb-2;
   user-select: none;
-  
 }
 
 .selected-chapter {
