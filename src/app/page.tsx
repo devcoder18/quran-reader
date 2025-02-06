@@ -69,6 +69,16 @@ export default function Home() {
     const partialText: string = words.slice(0, wordIndex + 1).join(" ");
     setVerseText(partialText);
   };
+
+  const goToPreviousWord = () => {
+    if (wordIndex > 0) {
+      setWordIndex((prevIndex) => prevIndex - 1);
+      const fullText: string = verses[verseNum - 1]?.text_uthmani.trim();
+      const words: Array<string> = fullText?.split(" ");
+      const partialText: string = words.slice(0, wordIndex - 1).join(" ");
+      setVerseText(partialText);
+    }
+  };
   
   const words = verses[verseNum - 1]?.text_uthmani.trim().split(" ");
   const verseTextPrefix = verseText.split(" ").slice(0, -1).join(" ");
@@ -102,6 +112,7 @@ export default function Home() {
           lastWord={lastWord}
           verseNum={verseNum}
           goToNextWord={goToNextWord}
+          goToPreviousWord={goToPreviousWord}
           isLastVerseWord={isLastVerseWord}
         />
       </div>

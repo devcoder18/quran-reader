@@ -74,6 +74,7 @@ body {
 .next-word-button {
   @apply rounded-full bg-gray-200 px-3 py-1 text-xs leading-4 font-semibold text-black hover:bg-gray-300 mb-2;
   user-select: none;
+  
 }
 
 .selected-chapter {
