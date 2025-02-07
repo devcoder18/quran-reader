@@ -22,4 +22,9 @@
 .drawer-item {
   cursor: pointer;
   @apply text-lg; /* Increase font size using Tailwind */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.drawer-item:hover {
+  background-color: #e5e7eb; /* Tailwind's gray-200 */
 }

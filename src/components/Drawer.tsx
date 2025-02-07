@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Drawer.css';
 
 interface DrawerProps {
@@ -10,8 +10,28 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onChapterSelect, selectedChapterId }) => {
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+        toggleDrawer();
+      }
+    };
+
+    if (drawerOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [drawerOpen, toggleDrawer]);
+
   return (
-    <div className={`drawer ${drawerOpen ? 'open' : ''}`}>
+    <div ref={drawerRef} className={`drawer ${drawerOpen ? 'open' : ''}`}>
       <button onClick={toggleDrawer} className="p-2">
         <span className="material-icons">close</span>
       </button>
