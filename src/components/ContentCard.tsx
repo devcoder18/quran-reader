@@ -26,7 +26,7 @@ const ContentCard: React.FC<ContentCardProps> = ({
                 <h2 className="text-2xl font-medium mb-2">{title}</h2>
                 {loading ? (
                     <div className="flex justify-center items-center">
-                        <span className="material-icons">hourglass_empty</span>
+                        <span className="material-icons">hourglass</span>
                     </div>
                 ) : (
                     <div className="rtl text-2xl md:text-2xl lg:text-3xl">

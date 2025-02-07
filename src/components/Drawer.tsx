@@ -44,7 +44,8 @@ const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onC
               onChapterSelect(chapter.id);
             }}
           >
-            {chapter.name_arabic}
+            <span className="chapter-number">{chapter.id.toLocaleString('ar-SA')}</span>
+            <span className="chapter-name">{chapter.name_arabic}</span>
           </li>
         ))}
       </ul>

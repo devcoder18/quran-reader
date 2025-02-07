@@ -9,6 +9,8 @@
   --foreground: #171717;
   --highlight-background: #fff9c4; /* Light yellow */
   --highlight-foreground: #000000; /* Black */
+  --verse-number-last-bg: #171717; /* Light gray */
+  --verse-number-last-fg: #f3f4f6; /* Dark text */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,6 +19,8 @@
     --foreground: #ededed;
     --highlight-background: #ffeb3b; /* Bright yellow */
     --highlight-foreground: #000000; /* Black */
+    --verse-number-last-bg: #f3f4f6; /* Dark gray */
+    --verse-number-last-fg: #171717; /* Light text */
   }
 }
 
@@ -70,7 +74,8 @@ body {
 }
 
 .verse-number-last {
-  @apply border-gray-800 bg-gray-100;
+  background-color: var(--verse-number-last-bg);
+  color: var(--verse-number-last-fg);
 }
 
 .verse-number-default {
