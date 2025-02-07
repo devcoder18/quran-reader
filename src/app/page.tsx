@@ -17,7 +17,7 @@ export default function Home() {
   const [verseText, setVerseText] = useState<string>("");
 
   useEffect(() => {
-    const fetchChapters = fetch("/data/chapters.json").then((response) => response.json());
+    const fetchChapters = fetch("/data/chapterNames.json").then((response) => response.json());
     const fetchSurah = fetch("/data/chapters/1.json").then((response) => response.json());
 
     Promise.all([fetchChapters, fetchSurah])
@@ -103,6 +103,7 @@ export default function Home() {
   const verseTextPrefix = verseText.split(" ").slice(0, -1).join(" ");
   const lastWord = verseText.split(" ").slice(-1).join(" ");
   const isLastVerseWord = wordIndex === words?.length;
+  const title = `سُورَةُ ${chapters[chapterId - 1]?.name_arabic || ""}`;
 
   return (
     <div className="container max-w-screen-xl mx-auto px-4">
@@ -126,7 +127,7 @@ export default function Home() {
       />
       <div className="flex justify-center xitems-center">
         <ContentCard
-          title={chapters[chapterId - 1]?.name_arabic || ""}
+          title={title}
           verseText={verseTextPrefix}
           lastWord={lastWord}
           verseNum={verseNum}
