@@ -24,12 +24,12 @@ function fetchHTML(url) {
 // Function to extract Surah names from the HTML content
 function extractSurahNames(html) {
     const surahList = [];
-    const regex = /<ch>(.*?)<\/ch>/g;
+    const regex = /<ch>(.*?)<\/ch>|<h>(.*?)<\/ch>/g;
     let match;
     let id = 1;
 
     while ((match = regex.exec(html)) !== null) {
-        let name_arabic = match[1].trim();
+        let name_arabic = (match[1] || match[2]).trim();
         // Remove the first word "سُورَةُ"
         if (name_arabic.startsWith("سُورَةُ")) {
             name_arabic = name_arabic.replace("سُورَةُ", "").trim();
