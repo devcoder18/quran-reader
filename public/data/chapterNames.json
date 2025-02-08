@@ -306,150 +306,154 @@
         },
         {
             "id": 77,
-            "name_arabic": "النَّبَإِ"
+            "name_arabic": "المُرۡسَلَاتِ"
         },
         {
             "id": 78,
-            "name_arabic": "النَّازِعَاتِ"
+            "name_arabic": "النَّبَإِ"
         },
         {
             "id": 79,
-            "name_arabic": "عَبَسَ"
+            "name_arabic": "النَّازِعَاتِ"
         },
         {
             "id": 80,
-            "name_arabic": "التَّكۡوِيرِ"
+            "name_arabic": "عَبَسَ"
         },
         {
             "id": 81,
-            "name_arabic": "الانفِطَارِ"
+            "name_arabic": "التَّكۡوِيرِ"
         },
         {
             "id": 82,
-            "name_arabic": "المُطَفِّفِينَ"
+            "name_arabic": "الانفِطَارِ"
         },
         {
             "id": 83,
-            "name_arabic": "الانشِقَاقِ"
+            "name_arabic": "المُطَفِّفِينَ"
         },
         {
             "id": 84,
-            "name_arabic": "البُرُوجِ"
+            "name_arabic": "الانشِقَاقِ"
         },
         {
             "id": 85,
-            "name_arabic": "الطَّارِقِ"
+            "name_arabic": "البُرُوجِ"
         },
         {
             "id": 86,
-            "name_arabic": "الأَعۡلَىٰ"
+            "name_arabic": "الطَّارِقِ"
         },
         {
             "id": 87,
-            "name_arabic": "الغَاشِيَةِ"
+            "name_arabic": "الأَعۡلَىٰ"
         },
         {
             "id": 88,
-            "name_arabic": "الفَجۡرِ"
+            "name_arabic": "الغَاشِيَةِ"
         },
         {
             "id": 89,
-            "name_arabic": "البَلَدِ"
+            "name_arabic": "الفَجۡرِ"
         },
         {
             "id": 90,
-            "name_arabic": "الشَّمۡسِ"
+            "name_arabic": "البَلَدِ"
         },
         {
             "id": 91,
-            "name_arabic": "اللَّيۡلِ"
+            "name_arabic": "الشَّمۡسِ"
         },
         {
             "id": 92,
-            "name_arabic": "الضُّحَىٰ"
+            "name_arabic": "اللَّيۡلِ"
         },
         {
             "id": 93,
-            "name_arabic": "الشَّرۡحِ"
+            "name_arabic": "الضُّحَىٰ"
         },
         {
             "id": 94,
-            "name_arabic": "التِّينِ"
+            "name_arabic": "الشَّرۡحِ"
         },
         {
             "id": 95,
-            "name_arabic": "العَلَقِ"
+            "name_arabic": "التِّينِ"
         },
         {
             "id": 96,
-            "name_arabic": "القَدۡرِ"
+            "name_arabic": "العَلَقِ"
         },
         {
             "id": 97,
-            "name_arabic": "البَيِّنَةِ"
+            "name_arabic": "القَدۡرِ"
         },
         {
             "id": 98,
-            "name_arabic": "الزَّلۡزَلَةِ"
+            "name_arabic": "البَيِّنَةِ"
         },
         {
             "id": 99,
-            "name_arabic": "العَادِيَاتِ"
+            "name_arabic": "الزَّلۡزَلَةِ"
         },
         {
             "id": 100,
-            "name_arabic": "القَارِعَةِ"
+            "name_arabic": "العَادِيَاتِ"
         },
         {
             "id": 101,
-            "name_arabic": "التَّكَاثُرِ"
+            "name_arabic": "القَارِعَةِ"
         },
         {
             "id": 102,
-            "name_arabic": "العَصۡرِ"
+            "name_arabic": "التَّكَاثُرِ"
         },
         {
             "id": 103,
-            "name_arabic": "الهُمَزَةِ"
+            "name_arabic": "العَصۡرِ"
         },
         {
             "id": 104,
-            "name_arabic": "الفِيلِ"
+            "name_arabic": "الهُمَزَةِ"
         },
         {
             "id": 105,
-            "name_arabic": "قُرَيۡشٍ"
+            "name_arabic": "الفِيلِ"
         },
         {
             "id": 106,
-            "name_arabic": "المَاعُونِ"
+            "name_arabic": "قُرَيۡشٍ"
         },
         {
             "id": 107,
-            "name_arabic": "الكَوثَرِ"
+            "name_arabic": "المَاعُونِ"
         },
         {
             "id": 108,
-            "name_arabic": "الكَافِرُونَ"
+            "name_arabic": "الكَوثَرِ"
         },
         {
             "id": 109,
-            "name_arabic": "النَّصۡرِ"
+            "name_arabic": "الكَافِرُونَ"
         },
         {
             "id": 110,
-            "name_arabic": "المَسَدِ"
+            "name_arabic": "النَّصۡرِ"
         },
         {
             "id": 111,
-            "name_arabic": "الإِخۡلَاصِ"
+            "name_arabic": "المَسَدِ"
         },
         {
             "id": 112,
-            "name_arabic": "الفَلَقِ"
+            "name_arabic": "الإِخۡلَاصِ"
         },
         {
             "id": 113,
+            "name_arabic": "الفَلَقِ"
+        },
+        {
+            "id": 114,
             "name_arabic": "النَّاسِ"
         }
     ]
