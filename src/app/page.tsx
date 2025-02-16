@@ -9,8 +9,6 @@ import getConfig from 'next/config';
 const config = getConfig();
 console.log('Next.js Config:', config);
 
-const { publicRuntimeConfig } = config;
-
 export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
   const [verses, setVerses] = useState<any>([]);
