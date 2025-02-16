@@ -4,7 +4,7 @@ import Image from "next/image";
 import ContentCard from "@/components/ContentCard";
 import Drawer from "@/components/Drawer";
 import { useEffect, useState } from "react";
-import icon from '/icon.png';
+import icon from './icon.png';
 
 export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
