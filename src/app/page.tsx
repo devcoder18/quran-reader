@@ -5,6 +5,8 @@ import ContentCard from "@/components/ContentCard";
 import Drawer from "@/components/Drawer";
 import { useEffect, useState } from "react";
 
+console.log('Environment Variables:', process.env);
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Home() {
