@@ -4,10 +4,6 @@ import Image from "next/image";
 import ContentCard from "@/components/ContentCard";
 import Drawer from "@/components/Drawer";
 import { useEffect, useState } from "react";
-import getConfig from 'next/config';
-
-const config = getConfig();
-console.log('Next.js Config:', config);
 
 export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
@@ -21,8 +17,8 @@ export default function Home() {
   const [verseText, setVerseText] = useState<string>("");
 
   useEffect(() => {
-    const fetchChapters = fetch("/data/chapterNames.json").then((response) => response.json());
-    const fetchSurah = fetch("/data/chapters/1.json").then((response) => response.json());
+    const fetchChapters = fetch("data/chapterNames.json").then((response) => response.json());
+    const fetchSurah = fetch("data/chapters/1.json").then((response) => response.json());
 
     Promise.all([fetchChapters, fetchSurah])
       .then(([chaptersData, surahData]) => {
@@ -40,7 +36,7 @@ export default function Home() {
   const handleChapterSelect = (chapterId: number) => {
     setChapterId(chapterId);
     setLoading(true);
-    fetch(`/data/chapters/${chapterId}.json`)
+    fetch(`data/chapters/${chapterId}.json`)
       .then((response) => response.json())
       .then((data) => {
         setVerses(data.verses);
