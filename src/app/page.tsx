@@ -4,6 +4,7 @@ import Image from "next/image";
 import ContentCard from "@/components/ContentCard";
 import Drawer from "@/components/Drawer";
 import { useEffect, useState } from "react";
+import icon from '/icon.png';
 
 export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
@@ -109,7 +110,7 @@ export default function Home() {
     <div className="container max-w-screen-xl mx-auto px-4">
       <nav className="sticky top-0 flex items-center space-x-4 justify-between">
         <div className="flex items-center">
-          <Image src="/icon.png" alt="icon" width={16} height={16} />
+          <Image src={icon} alt="icon" width={16} height={16} />
           <div className="ml-2">
             Quran Reader
           </div>
