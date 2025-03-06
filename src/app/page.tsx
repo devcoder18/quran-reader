@@ -5,11 +5,11 @@ import ContentCard from "@/components/ContentCard";
 import Drawer from "@/components/Drawer";
 import { useEffect, useState } from "react";
 import icon from './icon.png';
+import { getBaseUrl } from '@/utils/baseUrl';
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const { baseUrl } = getBaseUrl();
 
-console.log({ basePath });
-console.log('env', process.env);
+console.log({ baseUrl });
 
 export default function Home() {
   const [chapters, setChapters] = useState<any>([]);
@@ -23,8 +23,8 @@ export default function Home() {
   const [verseText, setVerseText] = useState<string>("");
 
   useEffect(() => {
-    const fetchChapters = fetch(`${basePath}/data/chapterNames.json`).then((response) => response.json());
-    const fetchSurah = fetch(`${basePath}/data/chapters/1.json`).then((response) => response.json());
+    const fetchChapters = fetch(`${baseUrl}/data/chapterNames.json`).then((response) => response.json());
+    const fetchSurah = fetch(`${baseUrl}/data/chapters/1.json`).then((response) => response.json());
 
     Promise.all([fetchChapters, fetchSurah])
       .then(([chaptersData, surahData]) => {
@@ -33,7 +33,7 @@ export default function Home() {
         setVerseNum(1);
       })
       .catch((error) => console.error("Error fetching data:", error));
-  }, [basePath]);
+  }, [baseUrl]);
 
   const toggleDrawer = () => {
     setDrawerOpen(!drawerOpen);
@@ -42,7 +42,7 @@ export default function Home() {
   const handleChapterSelect = (chapterId: number) => {
     setChapterId(chapterId);
     setLoading(true);
-    fetch(`${basePath}/data/chapters/${chapterId}.json`)
+    fetch(`${baseUrl}/data/chapters/${chapterId}.json`)
       .then((response) => response.json())
       .then((data) => {
         setVerses(data.verses);
