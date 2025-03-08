@@ -1,0 +1,5 @@
+
+.clickable-ayat-box {
+    cursor: pointer;
+    user-select: none;
+}

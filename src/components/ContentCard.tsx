@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './ContentCard.css';
 
 interface ContentCardProps {
     title: string;
@@ -13,11 +14,21 @@ interface ContentCardProps {
 
 const ContentCard: React.FC<ContentCardProps> = ({
     title, verseText, lastWord, isLastVerseWord, verseNum, goToNextWord, goToPreviousWord, loading }) => {
+    
+    const [extraClick, setExtraClick] = useState(false);
+
+    const handleAyatClick = () => {
+        if (isLastVerseWord && !extraClick) {
+            setExtraClick(true);
+        } else {
+            setExtraClick(false);
+            goToNextWord();
+        }
+    };
 
     return (
-
         <div className="flex-col w-full">
-            <h2 className="text-2xl font-medium mb-2 text-center">{title}</h2>
+            <h2 className="text-2xl font-extrabold mb-2 text-center">{title}</h2>
             <div className="flex grow">
                 <button
                     onClick={goToNextWord}
@@ -25,7 +36,9 @@ const ContentCard: React.FC<ContentCardProps> = ({
                     <span className="material-icons">arrow_back</span>
                 </button>
 
-                <div className="text-center rtl rounded-lg border border-gray-300 p-4 shadow-md mx-4 grow">
+                <div 
+                    className="text-center rtl rounded-lg border border-gray-300 p-4 shadow-md mx-4 grow clickable-ayat-box"
+                    onClick={handleAyatClick}>
                     {loading ? (
                         <div className="flex justify-center items-center">
                             <span className="material-icons">hourglass</span>
