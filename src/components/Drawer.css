@@ -1,5 +1,6 @@
 .drawer {
-  background-color: white;
+  background-color: var(--drawer-background);
+  color: var(--drawer-foreground);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -17,7 +18,7 @@
 
 .selected-chapter {
   font-weight: bold;
-  background-color: #f3f4f6; /* Tailwind's gray-100 */
+  background-color: var(--selected-chapter-background);
 }
 
 .drawer-item {
@@ -27,7 +28,7 @@
 }
 
 .drawer-item:hover {
-  background-color: #e5e7eb; /* Tailwind's gray-200 */
+  background-color: var(--drawer-item-hover-background);
 }
 
 .chapter-number {
@@ -35,5 +36,34 @@
 }
 
 .chapter-name {
-    @apply mr-4; /* Tailwind spacing for margin-right */
+  @apply mr-4; /* Tailwind spacing for margin-right */
+}
+
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.theme-toggle button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Light mode styles */
+:root {
+  --drawer-background: white;
+  --drawer-foreground: black;
+  --selected-chapter-background: #f3f4f6; /* Tailwind's gray-100 */
+  --drawer-item-hover-background: #e5e7eb; /* Tailwind's gray-200 */
+}
+
+/* Dark mode styles */
+[data-theme="dark"] {
+  --drawer-background: #1a1a1a; /* Dark background */
+  --drawer-foreground: #ededed; /* Light text */
+  --selected-chapter-background: #333333; /* Darker background for selected chapter */
+  --drawer-item-hover-background: #444444; /* Darker background on hover */
 }

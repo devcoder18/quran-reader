@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Drawer.css';
 
 interface DrawerProps {
@@ -11,6 +11,14 @@ interface DrawerProps {
 
 const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onChapterSelect, selectedChapterId }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      setTheme(preferredTheme);
+    }
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -30,11 +38,24 @@ const Drawer: React.FC<DrawerProps> = ({ chapters, drawerOpen, toggleDrawer, onC
     };
   }, [drawerOpen, toggleDrawer]);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
   return (
     <div ref={drawerRef} className={`drawer ${drawerOpen ? 'open' : ''}`}>
       <button onClick={toggleDrawer} className="p-2">
         <span className="material-icons">close</span>
       </button>
+      <div className="theme-toggle">
+        <button onClick={toggleTheme} className="p-2">
+          <span className="material-icons">{theme === 'light' ? 'dark_mode' : 'light_mode'}</span>
+        </button>
+      </div>
       <ul>
         {chapters.map((chapter: any) => (
           <li
